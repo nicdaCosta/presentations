@@ -1,0 +1,635 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="logoslide nobackground">
+    <article class="flexbox vcenter">
+      <span class="splash_outer">
+        <span class="splash_middle">
+          <span class="splash">
+            <img src="images/avatar_large.png">
+          </span>
+        </span>
+      </span>
+      <span class="splash_banner"></span>
+    </article>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/avatar.png"></aside>
+    <aside class="gdbar-right right"><img src="images/jsinsa.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Developing For The Mobile Web</h2>
+    </hgroup>
+    <article>
+      <ul class="build">
+        <li>
+          Mobile and some of it's Quirks
+          <ul class="build">
+            <li>Feature Detection...The Right Way!</li>
+          </ul>
+        </li>
+        <li>Awesome Web API's available
+          <!--ul>
+            <li>Subtitle capitalization is title case</li>
+          </ul-->
+        </li>
+        <li>Developers Tools</li>
+        <li>Resources And Further Reading</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>The World Of Mobile</h2>
+    </hgroup>
+    <article>
+      <ul class="build">
+        <li>One platform across a magnitude of devices</li>
+        <li>Browsers are shipping new releases and features every 6 weeks</li>
+        <li>Powerful features available</li>
+        <li>( this + Developers ) === EXCITEMENT</li>
+      </ul>
+      <br>
+    </article>
+  </slide>
+
+  <!--slide class="segue dark quote nobackground">
+    <aside class="gdbar right bottom"><img src="images/hitchhikers_logo.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <q>
+      KEEP CALM and DON'T PANIC 
+      </q>
+      <div class="author">
+        - hitchhiker's guide to the galaxy
+      </div>
+    </article>
+  </slide-->
+
+  <slide>
+    <hgroup>
+      <h2>Quirks</h2>
+    </hgroup>
+    <article class="smaller">
+      <p>All platforms have their quirks and hacks...here are some and their solutions to help get you started</p>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <hgroup>
+        <h2>Quirks</h2>
+      </hgroup>
+      <div class="build">
+        <h4>Media Queries</h4>
+        <br>
+        <p>A core feature for all responsive mobile sites</p>
+        <br>
+        <h6>Detecting Orientation Change</h6>
+        <br>
+          <pre class="prettyprint" data-lang="css">
+            @media all and (orientation: landscape) { 
+              /* only apply styles for landscape */
+            }
+          </pre>
+
+          <h6>W3 Media Query Spec</h6>
+          <blockquote>
+            <span class="quotation">"</span>The ‘orientation’ media feature is ‘portrait’ when the value of the ‘height’ media feature is greater than or equal to the value of the ‘width’ media feature. Otherwise ‘orientation’ is ‘landscape’<span class="quotation">"</span>.
+          </blockquote>
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <hgroup>
+        <h2>Quirks</h2>
+        <h4>Media Queries</h4>
+      </hgroup>
+      <div class="build">
+        <br>
+        <p>Android Keyboard...</p>
+        <br>
+        <p>
+          The keyboard is part of the screen real estate.</p>
+        <br>
+        <p>Fetching <code class="blue">window.innerHeight</code> will be different when keyboard is up / down.</p>
+        <br><hr/>
+        <h6>W3 Media Query Spec</h6>
+          <blockquote>
+            <span class="quotation">"</span>The ‘<b><i>orientation</i></b>’ media feature is ‘<b><i>portrait</i></b>’ when the value of the ‘<b><i>height</i></b>’ media feature is <b>greater than or equal</b> to the value of the ‘<b><i>width</i></b>’ media feature. Otherwise ‘<i>orientation</i>’ is ‘<b><i>landscape</i></b>’<span class="quotation">"</span>.
+          </blockquote>
+        <hr/><br>
+        <p>Android Versions: 4.0 - 4.1.2 ( <i>default browsers</i> )</p>
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <hgroup>
+        <h2>Quirks</h2>
+        <h4>Media Queries</h4>
+      </hgroup>
+      <br>
+      <h4>Solution?</h4>
+      <div class="build">
+        <br>
+        <p>Aspect Ratio</p>
+        <br>
+        <blockquote>
+          <span class="quotation">"</span>The ‘aspect-ratio’ media feature is defined as the ratio of the value of the ‘<b>width</b>’ media feature to the value of the ‘<b>height</b>’ media feature.’<span class="quotation">"</span>.
+        </blockquote>
+        <br>
+        <pre class="prettyprint" data-lang="css">
+          @media all and (min-aspect-ratio: 13/9) { 
+            /* only apply styles for landscape */
+          }
+        </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <hgroup>
+        <h2>Quirks</h2>
+        <h4>Orientation</h4>
+      </hgroup>
+      <br>
+      <pre class="prettyprint" data-lang="javascript">window.orientation; // 90 === landscape...?</pre>
+      <div class="build">
+        <p>This value is updated on <code class="blue">orientationchange</code> event being fired.</p>
+        <br>
+        <p>Values are <i>0</i> or <i>180</i> for portrait and <i>90</i> or <i>-90</i> for landscape...correct?</p>
+        <br>
+        <p>0 is based on the default "<i>home</i>" orientation. Motorolla Xoom, returns 0 as landscape.</p>
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <hgroup>
+        <h2>Quirks</h2>
+        <h4>Orientation</h4>
+      </hgroup>
+      <h4>Solution?</h4>
+      <div class="build">
+        <p>Comparing <code class="blue">window.innerHeight</code> to <code class="blue">window.innerWidth</code> on <code class="blue">orientationchange</code> <b>AND</b> <code class="blue">onresize</code></p>
+        <br>
+        <p><i>Tip: Only run comparison once both events fired. Cache <code class="blue">window.innerWeight</code>, only compare if width has changed. Due to Android Keyboard firing onresize event</i></p>
+        <br>
+        <pre class="prettyprint" data-lang="javascript">
+          window.document.addEventListener( 'resize' , function() {
+            runResize = true;
+            if ( runResize && runOrientation ) {
+              handleChange() // compares: window.innerHeight > window.innerWidth
+              runResize = false;
+              runOrientation = false;
+            }
+          } , false );
+        </pre>
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Quirks</h2>
+      <h3>Sound</h3>
+    </hgroup>
+    <article>
+      <p>Playing sound using HTML5 Audio on a device is easy...</p>
+      <pre class="prettyprint" data-lang="javascript">
+  if ( typeof window.Audio !== 'undefined' ) {
+    // create new Audio Node
+    var canHasSound = new Audio();
+    
+    // set source file, then load
+    canHasSound.src = "My_Amazing_Tunes.mp3";
+    canHasSound.load();
+
+    // PLAY!!!!
+    canHasSound.play();
+  }
+      </pre>
+    </article>
+  </slide>
+
+   <slide>
+    <hgroup>
+      <h2>Quirks</h2>
+    </hgroup>
+    <article class="smaller" style="margin-top:0.9em">
+      <pre class="prettyprint" data-lang="javascript">
+ if ( typeof window.Audio !== 'undefined' ) {
+    // create new Audio Node
+    var canHasSound = new Audio(),
+        <b>isIOS = /iPhone|iPad|iPod/ig.test( window.navigator.userAgent );</b> //Hacks...Yay...
+    
+    // set source file, then load
+    canHasSound.src = "My_Amazing_Tunes.mp3";
+
+    <b>if ( isIOS ) {
+      
+      document.addEventListener( 'touchstart' , function() {
+
+        canHasSound.load();
+        document.removeEventListener( 'touchstart' , arguments.callee , false );
+
+      } , false );
+    
+    }</b> else {
+      canHasSound.load();
+    }
+
+    // PLAY!!!!
+    canHasSound.play();
+  }
+      </pre>
+    </article>
+  </slide>
+
+<slide>
+    <hgroup>
+      <h2>Quirks</h2>
+    </hgroup>
+    <article class="smaller" style="margin-top:0.9em">
+      <pre class="prettyprint" data-lang="javascript">
+  // create new Audio Node
+  var canHasSound = new Audio(),
+      <b>touchToLoad = /iPhone|iPad|iPod|/ig.test( window.navigator.userAgent ),</b> //Hacks...Yay...
+      <b>touchToPlay = /iPhone|iPad|iPod|Chrome|Android x.x.x/ig.test( window.navigator.userAgent );</b>//Moar
+  
+  // set source file, then load
+  canHasSound.src = "My_Amazing_Tunes.mp3";
+
+  <b>if ( touchToLoad ) {
+    document.addEventListener( 'touchstart' , function() {
+      canHasSound.load();
+      document.removeEventListener( 'touchstart' , arguments.callee , false );
+      }
+    } , false );
+  }</b> else {
+    canHasSound.load();
+  }
+  // PLAY!!!!...eventually...
+  <b>if ( touchToPlay ) {
+        document.addEventListener( 'touchstart' , function(){
+          canHasSound.play();
+          document.removeEventListener( 'touchstart'  , arguments.callee , false );
+        } , false );
+  }</b> else {
+    canHasSound.play();
+  } 
+      </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Feature Detection</h2>
+      <h3>The Right Way</h3>
+    </hgroup>
+    <article class="smaller">
+      <pre class="prettyprint" data-lang="javascript">
+    var testSounds = { key : 'touchToLoad' , Modernizr : [ 'Audio'] , 
+                       custom : function() { /* Create and Play Audio as Test */ } 
+                     };
+    
+    window.featurama.config.touchToLoad = { 
+          regex : [ /(iPad|iPhone|iPod)/ig , /(Chrome)/ig ] , 
+          result : true 
+        };
+
+    window.featurama.run( testSounds );
+      </pre>
+      <pre class="prettyprint" data-lang="javascript">
+
+    if ( <b>window.featurama.results.touchToLoadSound</b> ) {
+
+      // .. rest of code 
+
+    }
+      </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Feature Detection</h2>
+    </hgroup>
+    <article>
+      <p>The Mobile Web is constantly changing and evolving...</p><p>be future friendly and feature detect</p>
+      <ul class="build">
+        <li>Test as you intend to use it</li>
+        <li>Leverage existing tools such as Modernizr and featurama.js</li>
+        <li>Test Once, use everywhere</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Web API's</h2>
+    </hgroup>
+    <article>
+      <p>Loads of Web API's that are available and AMAZE-BALLS!
+      
+      <h6>getUserMedia API ( <i>Accessing audio and video from the device</i> )</h6>
+
+          <pre class="prettyprint" data-lang="javascript">
+              var video = document.querySelector( 'video' );
+
+              navigator.getUserMedia( { audio: true , video : true }, 
+                  function( stream ) {
+                    video.src = window.URL.createObjectURL(stream);
+                  }, onVideoFail );
+          </pre>
+
+        <h6>Offline Support ( <i>Detecting whether a device is connected to a network</i> )</h6>
+
+          <pre class="prettyprint" data-lang="javascript">
+              window.navigator.onLine; // true
+          </pre>
+    </article>
+  </slide>
+
+   <slide>
+    <hgroup>
+      <h2>Web API's</h2>
+    </hgroup>
+    <article>
+      <h6>Web Notification API ( <i>Allow to be able to send web notifications and pop open in a banner</i> )</h6>
+
+          <pre class="prettyprint" data-lang="javascript">
+              new Notification("JS In SA Talk about to begin",
+                 { iconUrl: "calendar.gif",
+                   body: "Room 101",
+                   onclose: function() { cancelReminders(event); }
+                 });
+          </pre>
+
+        <h6>Geolocation ( <i>Able to get the devices' GeoLocation</i> )</h6>
+
+          <pre class="prettyprint" data-lang="javascript">
+            
+              navigator.geolocation.getCurrentPosition( function( position ) {
+                do_something( position.coords.latitude , position.coords.longitude );
+              });
+          </pre>
+    </article>
+  </slide>
+
+   <slide>
+    <hgroup>
+      <h2>Web API's</h2>
+    </hgroup>
+    <article>
+      <p>Here is a list of many which are available today!
+      <ul>
+        <li>WebRTC ( <i>Web Real Time Connection</i> )</li>
+        <li>getUserMedia API ( <i>Accessing audio and video from the device</i> )</li>
+        <li>Accelerometer ( <i>devicemotion event</i> )</li>
+        <li>localStorage ( <i>can be used to store JavaScript. Check out basket.js</i> )</li>
+        <li>Web Workers ( <i>creating multi-threaded interfaces</i> )</li>
+        <li>Page Visibilty API ( <i>detecting if page is in focus</i> )</li>
+        <li>Fullscreen API ( <i>allowing a webpage to go fullscreen</i> )</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Dev Tools</h2>
+    </hgroup>
+    <article>
+      <ul class="build">
+        <li>Chrome Remote Debugging</li>
+        <li>IOS Remote Debugging</li>
+        <li>jsConsole</li>
+        <li>Adobe Edge Inspect</li>
+        <li>Weinre</li>
+      </ul>
+    </article>
+  </slide>
+
+   <slide>
+    <hgroup>
+      <h2>Chrome Remote Debugging</h2>
+      <h4><a href="https://developers.google.com/chrome-developer-tools/docs/remote-debugging">https://developers.google.com/chrome-developer-tools/docs/remote-debugging</a><h4>
+    </hgroup>
+    <article class="smaller">
+      <p>Full Chrome Dev Tools Features</p>
+      <p>But Only On Chrome for Android ( <i>requires ADB</i> )</p>
+      
+      <span class="flexbox vcenter">
+        <img src="images/chrome_remote.jpg" class="reflect medium" alt="Description" title="Description">
+      </span>
+    
+    </article>
+  </slide>
+
+   <slide>
+    <hgroup>
+      <h2>IOS Remote Debugging</h2>
+      <h4><a href="https://developer.apple.com/library/safari/#documentation/AppleApplications/Reference/SafariWebContent/DebuggingSafarioniPhoneContent/DebuggingSafarioniPhoneContent.html">https://developer.apple.com</a><h4>
+    </hgroup>
+    <article class="smaller">
+      <p>Uses Safari Dev Tools</p>
+      <p>But Only On IOS 6 ( <i>requires a Macbook/iMac</i> )</p>
+      
+      <span class="flexbox vcenter">
+        <img src="images/ios_remote.png" class="reflect" alt="Description" title="Description">
+      </span>
+    </article>
+  </slide>
+
+   <slide>
+    <hgroup>
+      <h2>jsConsole</h2>
+      <h4><a href="http://jsconsole.com">http://jsconsole.com</a><h4>
+    </hgroup>
+    <article class="smaller">
+      <p>Alows for a remote console on any device. Just include the required script</p>
+      <p>Just a console and objects are not expandable</p>
+      
+      <span class="flexbox vcenter">
+        <img src="images/jsconsole_remote.PNG" class="reflect small" alt="Description" title="Description">
+      </span>
+    </article>
+  </slide>
+
+   <slide>
+    <hgroup>
+      <h2>Adobe Edge Inspect</h2>
+      <h4><a href="http://html.adobe.com/edge/inspect/">http://html.adobe.com/edge/inspect/</a><h4>
+    </hgroup>
+    <article class="smaller">
+      <p>Alows for a remote inspecting, live reload, screenshots.</p>
+      <p>On Android and IOS ( <i>requires instalation of app on device</i> )</p>
+      
+       <span class="flexbox vcenter">
+        <img src="images/edge_remote.png" class="reflect" alt="Description" title="Description">
+      </span>
+    </article>
+  </slide>
+
+   <slide>
+    <hgroup>
+      <h2>Weinre</h2>
+      <h4><a href="https://developers.google.com/chrome-developer-tools/docs/remote-debugging">https://developers.google.com/chrome-developer-tools/docs/remote-debugging</a><h4>
+    </hgroup>
+    <article class="smaller">
+      <ul>
+        <li>A remote instance of Webkit Inspector.</li>
+        <li>A node package. Available on NPM.</li>
+        <li>Allowing remote inspection, altering of css and full console on any device.</li>
+      </ul>
+      <code class="green">npm install weinre -g</code>
+       
+    </article>
+  </slide>
+
+   <slide>
+    <hgroup>
+      <h2>Future of dev Tools?</h2>
+      <h4><a href="http://brackets.io">http://brackets.io</a><h4>
+    </hgroup>
+    <article class="smaller">
+      <ul>
+        <li>Remote Inspecting in your text editor.</li>
+        <li>Live Reload/Editing.</li>
+        <li>Written in HTML, CSS , JavaScript with a Node.js core</li>
+        <li>Created and Maintained By Adobe</li>
+        <li>Open Source ( <a href="https://github.com/adobe/bracketss">https://github.com/adobe/brackets</a> )</li>
+      </ul>
+      <p>All that is missing is a JavaScript console and being able to remote debug with breakpoints...</p>
+      <span class="flexbox vcenter">
+        <img src="images/brackets.jpg" class="reflect" alt="Description" title="Description">
+      </span>
+       
+    </article>
+  </slide>
+
+ <slide>
+    <hgroup>
+      <h2>Mobile Web Roundup</h2>
+    </hgroup>
+    <article>
+      <ul class="build">
+        <li>You can define the features that you wish to use, and pollyfill the ones that don't or reduce the functionality accordingly</li>
+        <li>There are some truly powerful Web API's available that are usable today</li>
+        <li>Developer Tools are evolving at a rapid rate, making mobile development that much easier</li>
+        <li>Huge prescence for the mobile web at Google I/O 2013 and with latest Chrome Experiments</li>
+        <li>Mobile Web is being taken seriously as a viable platform. We have entire department ( +/- 75 ) dedicated to mobile web</li>
+        <li>The Mobile Web is fun!</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Links And Resources</h2>
+    </hgroup>
+    <article>
+      <ul class="expanded">
+        <li><a href="http://www.youtube.com/playlist?list=PLAbrfaVBC6kWiNBI1wPYhXtTke64QkLqC">Google I/O 2013 Mobile Talks ( Paul Kinlan's Youtube Playlist )</a></li>
+        <li><a href="http://kangax.github.io/es5-compat-table/">http://kangax.github.io/es5-compat-table/</a></li>
+        <li><a href="http://caniuse.com">http://caniuse.com</a></li>
+        <li><a href="http://iwanttouse.com">http://iwanttouse.com</a></li>
+        <li><a href="http://www.html5rocks.com/en/">http://www.html5rocks.com/</a></li>
+        <li><a href="http://modernizr.com/">http://modernizr.com/</a></li>
+        <li><a href="https://github.com/nicdaCosta/featurama.js">https://github.com/nicdaCosta/featurama.js</a></li>
+        <li><a href="http://g.co/rollit">http://g.co/rollit ( Google Chrome Experiment, Roll It )</a></li>
+        <li><a href="http://www.chrome.com/racer">http://www.chrome.com/racer ( Google Chrome Experiment, Racer )</a></li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/avatar.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/avatar.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Questions?</h2>
+    </hgroup>
+  </slide>
+
+  <slide class="logoslide dark nobackground">
+    <article class="flexbox vcenter">
+        <span class="splash_outer">
+        <span class="splash_middle">
+          <span class="splash">
+            <img src="images/avatar_large.png">
+          </span>
+        </span>
+      </span>
+    </article>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-XXXXXXXX-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
