@@ -1,5 +1,4 @@
-//var moduleUsed = ( 'AudioContext' in window || 'webkitAudioContext' in window ) ? 'webAudioAPI' : 'audioTag';
-var moduleUsed ='audioTag';
+var moduleUsed = ( 'AudioContext' in window || 'webkitAudioContext' in window ) ? 'webAudioAPI' : 'audioTag';
 
 require.config({
 	paths: {
@@ -41,7 +40,6 @@ require( [ 'soundEngine' , 'socketio' , 'requestAnimationFrame' ] , function( Co
 		areaWelcome = document.querySelector( '.welcomeContainer' ),
 		areaWait = document.querySelector( '.waitingContainer' ),
 		btnGetStarted = document.getElementById( 'btnWelcome' ),
-		btn2 = document.querySelector( '.data' ),
 		arrLateny = [];
 
 	document.querySelector( 'h5 > span' ).textContent = moduleUsed;
