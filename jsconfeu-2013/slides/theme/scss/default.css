@@ -1,0 +1,62 @@
+/*
+Syntax error: File to import not found or unreadable: compass/reset.
+              Load path: E:/slides/brown-bag/theme/scss
+        on line 3 of _base.scss
+        from line 1 of default.scss
+
+1: @import "base";
+2: @import "compass/css3/columns";
+3: @import "compass/css3/user-interface";
+4: 
+5: @mixin highlight-color($color: $brand-yellow) {
+6:   -webkit-tap-highlight-color: $color;
+7:   -moz-tap-highlight-color: $color;
+8:   -ms-tap-highlight-color: $color;
+
+Backtrace:
+_base.scss:3
+default.scss:1
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/tree/import_node.rb:67:in `rescue in import'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/tree/import_node.rb:45:in `import'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/tree/import_node.rb:28:in `imported_file'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/tree/import_node.rb:37:in `css_import?'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/tree/visitors/perform.rb:217:in `visit_import'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/tree/visitors/base.rb:37:in `visit'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/tree/visitors/perform.rb:100:in `visit'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/tree/visitors/perform.rb:227:in `block in visit_import'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/tree/visitors/perform.rb:227:in `map'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/tree/visitors/perform.rb:227:in `visit_import'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/tree/visitors/base.rb:37:in `visit'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/tree/visitors/perform.rb:100:in `visit'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/tree/visitors/base.rb:53:in `map'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/tree/visitors/perform.rb:128:in `visit_root'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/tree/visitors/base.rb:37:in `visit'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/tree/visitors/perform.rb:100:in `visit'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/tree/visitors/perform.rb:7:in `visit'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/tree/root_node.rb:20:in `render'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/engine.rb:315:in `_render'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/engine.rb:262:in `render'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/plugin/compiler.rb:341:in `update_stylesheet'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/plugin/compiler.rb:203:in `block in update_stylesheets'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/plugin/compiler.rb:201:in `each'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/plugin/compiler.rb:201:in `update_stylesheets'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/plugin/compiler.rb:235:in `watch'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/plugin.rb:107:in `method_missing'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/exec.rb:445:in `watch_or_update'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/exec.rb:307:in `process_result'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/exec.rb:41:in `parse'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/lib/sass/exec.rb:21:in `parse!'
+C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/sass-3.2.7/bin/sass:9:in `<top (required)>'
+C:/Ruby200-x64/bin/sass:23:in `load'
+C:/Ruby200-x64/bin/sass:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: File to import not found or unreadable: compass/reset.\A               Load path: E:/slides/brown-bag/theme/scss\A         on line 3 of _base.scss\A         from line 1 of default.scss\A \A 1: @import \"base\";\A 2: @import \"compass/css3/columns\";\A 3: @import \"compass/css3/user-interface\";\A 4: \A 5: @mixin highlight-color($color: $brand-yellow) {\A 6:   -webkit-tap-highlight-color: $color;\A 7:   -moz-tap-highlight-color: $color;\A 8:   -ms-tap-highlight-color: $color;"; }
