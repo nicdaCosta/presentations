@@ -15,14 +15,18 @@ require( [ 'utils' , "socketio" ] , function( utils , io ) {
 
 	'use strict';
 
-	var socket = io.connect('http://10.11.13.148:8000');
+	var socket = io.connect('http://192.168.0.2:8000');
 
 	var btnPlay = document.getElementById( 'play' ),
 		btnStop = document.getElementById( 'stop' ),
 		noUsers = document.getElementById( 'noUsers' ),
 		noLoaded = document.getElementById( 'noSounds' ),
 		noWebAudio = document.getElementById( 'noWebAudio' ),
-		noHTML5 = document.getElementById( 'noHTML5' );
+		noHTML5 = document.getElementById( 'noHTML5' ),
+		btnsSound = document.querySelector( '.sounds' ),
+		elStartTime = document.getElementById( 'startTime' ),
+		elEndTime = document.getElementById( 'endTime' ),
+		currentCommand = document.querySelector( '.currentComand' );
 
 	var handlePlay = function( e ) {
 
@@ -43,6 +47,20 @@ require( [ 'utils' , "socketio" ] , function( utils , io ) {
 
 	};
 
+	var handleSounds = function( e ) {
+
+		e.preventDefault();
+
+		var btnClicked = e.target;
+
+		if ( e.target.nodeName === 'BUTTON' ) {
+			startTime.value = btnClicked.dataset.start;
+			endTime.value = btnClicked.dataset.end;
+			currentCommand.textContent = btnClicked.dataset.sound;
+		}
+
+	};
+
 	var sendCommand = function( eventName , data ) {
 
 		socket.emit( eventName , data );
@@ -54,6 +72,9 @@ require( [ 'utils' , "socketio" ] , function( utils , io ) {
 	
 	btnStop.addEventListener( 'touchstart' , handleStop , false );
 	btnStop.addEventListener( 'click' , handleStop , false );
+	
+	btnsSound.addEventListener( 'touchstart' , handleSounds , false );
+	btnsSound.addEventListener( 'click' , handleSounds , false );
 
 	socket.on( 'update' , function( data ) {
 

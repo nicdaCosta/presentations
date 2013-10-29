@@ -181,7 +181,7 @@ define( 'webAudioAPI' , [ 'utils' ] , function( utils ) {
 		
 		}
 
-		_audio.source.stop(0);
+		_audio.source && _audio.source.stop(0);
 		_audio.isPlaying = false;
 
 		// stop the source and recreate. this is due to the fact that a source can not be played once it has completed 

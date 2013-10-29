@@ -45,7 +45,7 @@ define( 'soundEngine' , [ 'soundElement' , 'utils' ] , function( SoundElement , 
 
 		};
 
-		try { this.soundElement.play( _playSettings ); } catch( e ) { console.log(e.stack) };
+		try { this.soundElement.play( _playSettings ); } catch( e ) { console.log(e.stack); }
 
 		console.log( 'done?' , spriteName , startTime , endTime );
 

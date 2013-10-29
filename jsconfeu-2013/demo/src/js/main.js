@@ -24,7 +24,7 @@ require( [ 'soundEngine' , 'socketio' , 'requestAnimationFrame' ] , function( Co
 	console.log( 'Oi...stop digging through the console and pay attention ;)' );
 
 	// create new instance of sound Engine and other variable
-	var socket = io.connect('http://10.11.13.148:8000'),
+	var socket = io.connect('http://192.168.0.2:8000'),
 		objSettings = {
 
 			url : 'sounds/soundSprite.mp3',
@@ -40,6 +40,7 @@ require( [ 'soundEngine' , 'socketio' , 'requestAnimationFrame' ] , function( Co
 		areaWelcome = document.querySelector( '.welcomeContainer' ),
 		areaWait = document.querySelector( '.waitingContainer' ),
 		btnGetStarted = document.getElementById( 'btnWelcome' ),
+		btn2 = document.querySelector( '.data' ),
 		arrLateny = [];
 
 	document.querySelector( 'h5 > span' ).textContent = moduleUsed;
@@ -173,7 +174,7 @@ require( [ 'soundEngine' , 'socketio' , 'requestAnimationFrame' ] , function( Co
 
 		sendData( 'ping' , new Date().getTime() );
 
-	} , 2500 );
+	} , 500 );
 
 	areaStage.addEventListener( 'touchstart' , selectSide , false );
 	areaStage.addEventListener( 'MSPointerUp' , selectSide , false );

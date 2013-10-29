@@ -86,6 +86,18 @@
 			.userStats {
 				width: 30%;
 				margin-top: 0.7em;
+				float: left;
+			}
+
+			.sounds {
+				width: 60%;
+				margin-top: 0.7em;
+				float: left;
+			}
+
+			.sounds > .btn {
+				margin: 2.5% 15%;
+				display: block;
 			}
 
 			.comandContainer {
@@ -172,8 +184,14 @@
 	            </ul>
 	          </div>
 	        </div>
-		</div>
-		
+
+			<div class="sounds">
+				<button class="btn btn-primary" id="soundViolin" data-sound = "Violin" data-start=7.5 data-end=10.5>Violin Sound</button>
+				<button class="btn btn-info" id="soundMario" data-sound = "Super Mario Brothers" data-start="35.75" data-end="55">Mario Sound</button>
+				<button class="btn btn-danger" id="soundOrchestra" data-sound = "Orchestra - William Tell Overture" data-start="10.5" data-end="35">Orchestra Sound</button>
+				<button class="btn btn-inverse" id="soundClapping" data-sound = "Applause" data-start=0 data-end=6.5>Clapping Sound</button>
+			</div>
+
 		<script data-main="js/composer" src="components/requirejs/require.js"></script>
 
 	</body>
