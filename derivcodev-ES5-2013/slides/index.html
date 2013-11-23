@@ -1,0 +1,600 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/avatar.png"></aside>
+    <aside class="gdbar-right right"><img src="images/derico.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  <slide class="logoslide nobackground">
+    <article class="flexbox vcenter">
+        <span class="splash_outer">
+        <span class="splash_middle">
+          <span class="splash">
+            <img src="images/avatar_large.png">
+          </span>
+        </span>
+      </span>
+      <ul>
+          <li>
+              <a href="http://twitter.com/nic_daCosta">@nic_daCosta</a>
+          </li>
+          <li>
+              <a href="http://plus.google.com/+NicdaCosta">plus.google.com/+NicdaCosta</a>
+          </li>
+          <li>
+              <a href="http://derivco.com">derivco.com</a>
+          </li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/huh.gif)"></slide>
+
+  <slide class="segue bg-orange quote nobackground">
+    <article class="flexbox vleft auto-fadein">
+      <q>ECMAScript 5 ( <b>ES5</b> ), the latest edition of the standard upon which JavaScript is based.</q>
+      </q>
+      <div class="author">
+        Mozilla Developer Network
+        <br />
+        mdn.io
+      </div>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/no-thanks.gif)"></slide>
+
+  <slide class="segue bg-emerald quote nobackground">
+    <article class="flexbox vleft auto-fadein">
+      <h2 class="title">Browser Support?</h2>
+    </article>
+  </slide>
+
+  <slide class="segue bg-peter-river quote nobackground">
+    <article>
+      <ul class="build">
+        <li>Every current browser supports ES5</li>
+        <li>Every previous generation browser supports ES5</li>
+        <li>Every previous generation before that supports ES5</li>
+        <li>Node.js is ES5</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide class="segue bg-asphalt quote nobackground">
+    <article>
+      <ul>
+        <li>&gt;= IE9</li>
+        <li>&gt;= IOS 5.1</li>
+        <li>&gt;= Android 2.3 </li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Back To The Fundamentals - Using ES5 Today</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>ES5 Differ To ES3 Methods</li>
+        <li>New ES5 Basics Methods</li>
+        <li>Moar ES5 Goodness</li>
+        <li>Where To Go From Here?</li>
+        <li>Resources</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h3>Itterating Through An Array</h3>
+    </hgroup>
+    <article>
+     <pre class="prettyprint" data-lang="javascript">
+  // Vanilla JavaScript ( ES3 )
+  for ( var i = 0; i < canHazArray.length; i++ ) {
+    canHazArrayItem = canHazArray[i];
+    /* ... Do Stuff ... */
+  }
+  
+  // jQuery
+  <b>$.each( canHazArray , function( index , canHazArrayItem ) { </b>
+    /* ... Do Stuff ... */
+  } );
+  
+  // Underscore
+  <b>_.each( canHazArray , function( canHazArrayItem , index , originalArray ) { </b>
+    /* ... Do Stuff ... */
+  } );
+      </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h3>Array.forEach</h3>
+    </hgroup>
+    <article>
+     <pre class="prettyprint" data-lang="javascript">
+  // Vanilla JavaScript ( ES5 )
+  <b>canHazArray.forEach</b>( function( canHazArrayItem , index ) {
+    /* ... Do Stuff ... */
+  } );
+  
+  // jQuery
+  $.each( canHazArray , function( index , canHazArrayItem ) { </b>
+    /* ... Do Stuff ... */
+  } );
+  
+  // Underscore
+  _.each( canHazArray , function( canHazArrayItem , index , originalArray ) {
+    /* ... Do Stuff ... */
+  } );
+      </pre>
+    </article>
+  </slide>
+
+   <slide>
+    <hgroup>
+      <h3>Detecting An Array</h3>
+    </hgroup>
+    <article>
+     <pre class="prettyprint" data-lang="javascript">
+  var coffeeScriptBro = [],
+      isArray = false;
+
+  // Duck Typing
+  if ( 'splice' in coffeeScriptBro && 'join' in coffeeScriptBro ) {
+    isArray = true;
+  }
+
+  // Comparing Internal Class Property
+  if ( Object.prototype.toString.call( coffeeScriptBro ) === '[object Array]' ) {
+    isArray = true;
+  }
+  
+  // ES5
+  isArray = <b>Array.isArray</b>( coffeeScriptBro );
+      </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h3>Detecting If A Value Is In An Array</h3>
+    </hgroup>
+    <article>
+     <pre class="prettyprint" data-lang="javascript">
+
+  var progLanguages = [ 'Python' , 'Ruby' , 'C++' , 'JavaScript' , 'C#' , 'PHP' ],
+      whatIKnow = 'JavaScript',
+      index;
+
+  // ES3
+  for ( var i = 0; i < progLanguages.length; i++) {
+    if ( whatIKnow === progLanguages[ i ] ) {
+      index = i;
+      break;
+    }
+  }
+
+  // ES5
+  index = <b>progLanguages.indexOf</b>( whatIKnow );
+      </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h3>Other Basic Functions And Features</h3>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Array.toString</li>
+        <li>Array.lastIndexOf</li>
+        <li>Array.some</li>
+        <li>Array.map</li>
+        <li>Array.filter</li>
+        <li>Array.reduce</li>
+        <li>Array.reduceRight</li>
+        <li>Function.apply</li>
+        <li>Function.bind</li>
+        <li>Immutable undefined</li>
+      </ul>
+    </article>
+  </slide>
+
+   <slide>
+    <hgroup>
+      <h3>Creating An Object</h3>
+    </hgroup>
+    <article style="margin-top: 1%">
+      <pre class="prettyprint" data-lang="javascript">
+  // ES3
+  var DevEvening = { canHasProperty : true };
+
+  // ES5
+  DevEvening = Object.create( 
+                              Object.prototype, 
+                              { 
+                                "canHasProperty" : { 
+                                                      value : true
+                                                   } 
+                              } 
+                            );
+
+      </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h3>Itterating Through An Object</h3>
+    </hgroup>
+    <article style="margin-top: 1%">
+      <ul>
+        <li>
+          <pre class="prettyprint" data-lang="javascript">
+  var DevEvening = new Event();
+
+  DevEvening.name = 'Derivco Dev evening';
+
+  for ( var prop in DevEvening ) {
+    if ( obj.hasOwnProperty( prop ) && DevEvening[ prop ] ) {
+      /* .. Do Stuff As Prop Is Property Of DevEvening ... */
+    }
+  }
+          </pre>
+        </li>
+        <li class="build">
+          <pre class="prettyprint" data-lang="javascript">
+
+  <b>Object.keys</b>( DevEvening ).forEach( function( prop ) {
+      /* .. Do Stuff As Prop Is Property Of DevEvening... */
+  });  
+          </pre>
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+   <slide class="segue bg-sun-flower quote nobackground">
+    <article class="flexbox vleft auto-fadein">
+      <h2 style="font-size: 31px;color: #333;">All Added Methods / Properties In ES3 Are Always Enumerable</h2>
+      <h5 style="text-align: center;">So they always appear in 'for' loops</h5>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/woah.gif)"></slide>
+
+  <slide>
+    <hgroup>
+      <h3>Non-Enumerable Properties</h3>
+    </hgroup>
+    <article style="margin-top: 1%">
+      <pre class="prettyprint" data-lang="javascript">
+  var DevEvening = new Event();
+
+  // enumerable property
+  DevEvening.name = 'Derivco Dev evening';
+
+  // non-enumerable property
+  <b>Object.defineProperty</b>( DevEvening , 'moar' , { enumerable : false  , value : '\o/' } );
+
+  <b>Object.getOwnPropertyDescriptor</b>( DevEvening , 'moar' );//returns a property descriptor
+
+  // get all properties ( enumerable and non-enumerable )
+  <b>Object.getOwnPropertyNames</b>( DevEvening ).forEach( function( prop ) {
+      /* .. Do Stuff As Prop Is Property Of DevEvening... */
+  });  
+  
+      </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h3>Non-Enumerable Properties</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="javascript">
+
+  var allDivs = document.querySelectorAll( 'div' ); // returns a NodeList
+
+  Object.defineProperty( 
+                          NodeList.prototype,
+                          'forEach', 
+                          { 
+                            value : Array.prototype.forEach, 
+                            enumerable : false
+                          } 
+                      );
+      </pre>
+    </article>
+  </slide>
+
+   <slide>
+    <hgroup>
+      <h2>Object.defineProperty Descriptors</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>configurable</li>
+        <li>enumerable</li>
+        <li>value</li>
+        <li>writable</li>
+        <li>get</li>
+        <li>set</li>
+      </ul>
+    </article>
+  </slide>
+
+    <slide>
+    <hgroup>
+      <h3>Make Objects Observable</h3>
+      <h5 style="font-size: 18px;">Snippet By Martin Cronjé - <a href="http://twitter.com/martincronje">@martincronje</a></h5>
+    </hgroup>
+    <article class="smaller">
+      <p style="font-size:16px">Source: <a href="http://jsfiddle.net/martincronje/Dz9WD/">jsfiddle.net/martincronje/Dz9WD/</a></p>
+      <pre class="prettyprint" data-lang="javascript">
+
+ function makePropertyObservable(obj, prop, fn) {
+    <b>var oldDesc = Object.getOwnPropertyDescriptor(obj, prop);</b>
+
+    if (!oldDesc.get) oldDesc = makePropertyDescriptor(oldDesc);
+
+   <b> var newDesc = {
+        set: function (newValue) {
+            var diff = {
+                name: prop,
+                oldValue: oldDesc.get.call(this),
+                newValue: newValue
+            };
+            fn(this, diff)
+            oldDesc.set.call(this, newValue);
+        }
+    };</b>
+    Object.defineProperty(obj, prop, newDesc);
+}
+      </pre>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/minion.gif)"></slide>
+
+
+   <slide>
+    <hgroup>
+      <h2>Moar Goodies</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>
+          Object.preventExtensions
+        </li>
+        <li>
+          Object.isExtensible
+        </li>
+        <li>
+          Object.seal
+        </li>
+        <li>
+          Object.isSealed
+        </li>
+        <li>
+          Object.freeze
+        </li>
+        <li>
+          Object.isFrozen
+        </li>
+        <li>
+          <code class="red">'use strict'</code>
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide class="segue bg-pomergranate quote nobackground">
+    <article class="flexbox vleft auto-fadein">
+      <q>ECMAScript 5's strict mode is a way to opt in to a restricted variant of JavaScript</q>
+      </q>
+      <div class="author">
+        Mozilla Developer Network
+        <br />
+        mdn.io
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h3>Strict Mode</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="javascript">
+
+  "use strict";
+  answerToLife = 43; // throws a ReferenceError
+
+  "use strict";
+  var longCat = {};
+  Object.defineProperty( longCat , "isLong" , { value: true, writable: false });
+  longCat.isLong = false; // Throws a TypeError
+
+  functionName.call( null ); // context of this === window
+
+  'use strict'
+  functionName.call( null ); // context of this === null
+ 
+      </pre>
+    </article>
+  </slide>
+
+  <slide class="segue bg-yay quote nobackground">
+    <article class="flexbox vleft auto-fadein">
+      <h3 class="title">ES6</h3>
+    </article>
+  </slide>
+
+   <slide>
+    <hgroup>
+      <h2>ES6 FTW!</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>
+          Block Scoping ( <code class="green">let</code> )
+        </li>
+        <li>
+          Constants ( <code class="green">const</code> )
+        </li>
+        <li>
+          Rest Parameters
+        </li>
+        <li>
+          Generators
+        </li>
+        <li>
+          For...Of loops
+        </li>
+        <li>
+          Array Comprehensions
+        </li>
+        <li>
+          Destructuring
+        </li>
+        <li>
+          Modules
+        </li>
+        <li>
+          Class
+        </li>
+        <li>
+          And Loads More!
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+
+  <slide>
+    <hgroup>
+      <h2>Quick Recap</h2>
+    </hgroup>
+    <article>
+     <ul>
+        <li>[].forEach</li>
+        <li>Array.isArray</li>
+        <li>[].indexOf</li>
+        <li>Function.bind</li>
+        <li>Object.create</li>
+        <li>Object.keys && Object.getOwnPropertyNames</li>
+        <li>Object.preventExtensions && Object.seal && Object.freeze</li>
+        <li>'use strict'</li>
+        <li>Loads More</li>
+        <li>Consider Using ES5 For Next Project</li>
+        <li>ES6 FTW</li>
+     </ul>
+     </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Links And Resources</h2>
+    </hgroup>
+    <article>
+      <ul class="expanded">
+        <li><a href="http://kangax.github.io/es5-compat-table/">Kangax's Compatability Tables</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/1.8.5">MDN - New in JavaScript</a></li>
+        <li><a href="http://net.tutsplus.com/tutorials/javascript-ajax/what-they-didnt-tell-you-about-es5s-array-extras/">What They Didn’t Tell You About ES5′s Array Extras</a></li>
+        <li><a href="http://www.youtube.com/watch?v=XQf_OMlYmwo">Mike MacCana - Welcome our new ES5 overlords || RejectJS Video</a></li>
+        <li><a href="http://es5.github.io/">Annotated ES5 Spec</a></li>
+        </ul>
+    </article>
+  </slide>
+
+  <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/avatar.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/avatar.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Questions</h2>
+    </hgroup>
+  </slide>
+
+  <slide class="logoslide dark nobackground">
+    <article class="flexbox vcenter">
+        <span class="splash_outer">
+        <span class="splash_middle">
+          <span class="splash">
+            <img src="images/avatar_large.png">
+          </span>
+        </span>
+      </span>
+    </article>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-XXXXXXXX-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
